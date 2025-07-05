@@ -39,5 +39,18 @@ public class User {
     @Column
     private Role role;
 
+    // New fields for Auth
+    @Column(name= "provider")
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
+
+    @Column(name = "provider_id", length = 100)
+    private String providerId;
+
+    @Column(name = "email_verified", length = 1)
+    private Boolean emailVerified;
+
+    @Column(name = "profile_image", length = 255)
+    private String profileImage;
 
 }
