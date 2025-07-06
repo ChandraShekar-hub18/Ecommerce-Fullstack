@@ -5,6 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -14,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,18 +45,18 @@ public class User {
     @Column
     private Role role;
 
-    // New fields for Auth
-    @Column(name= "provider")
-    @Enumerated(EnumType.STRING)
-    private AuthProvider provider;
 
-    @Column(name = "provider_id", length = 100)
-    private String providerId;
 
-    @Column(name = "email_verified", length = 1)
-    private Boolean emailVerified;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(this.role.name())); // or however your role is stored
+    }
 
-    @Column(name = "profile_image", length = 255)
-    private String profileImage;
+    @Override public String getPassword() { return this.password; }
+    @Override public String getUsername() { return this.userName; }
+    @Override public boolean isAccountNonExpired() { return true; }
+    @Override public boolean isAccountNonLocked() { return true; }
+    @Override public boolean isCredentialsNonExpired() { return true; }
+    @Override public boolean isEnabled() { return true; }
 
 }
