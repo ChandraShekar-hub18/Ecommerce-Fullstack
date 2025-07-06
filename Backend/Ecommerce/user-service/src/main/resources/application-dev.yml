@@ -12,3 +12,16 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+jwt:
+  secret: chandu_learning_super_secure_secret_key_123!
+  expiration: 3600000 # 1 hour in milliseconds (optional, if you're using this)
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
