@@ -56,10 +56,13 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/api/auth/**").permitAll() //  Public routes
+                        .requestMatchers( "/api/auth/**").permitAll() //  Public routes
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")       //  Needs admin
-                        .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN") //  Authenticated users
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/user/**")
+//                        .hasAnyRole("USER", "ADMIN","Customer") //  Authenticated users
+//                        .anyRequest()
+                        .authenticated()
+                                .anyRequest().permitAll()
                 )
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
