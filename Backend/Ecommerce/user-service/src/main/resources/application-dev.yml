@@ -16,7 +16,9 @@ spring:
 jwt:
   secret: chandu_learning_super_secure_secret_key_123!
   expiration: 3600000 # 1 hour in milliseconds (optional, if you're using this)
-
+logging:
+  level:
+    org.springframework.security: DEBUG
 
 feign:
   client:
