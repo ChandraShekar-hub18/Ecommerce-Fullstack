@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-<!--	<parent>-->
-<!--		<groupId>org.springframework.boot</groupId>-->
-<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-<!--		<version>3.5.3</version>-->
-<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-<!--		-->
-<!--		-->
-<!--	</parent>-->
+	<!--	<parent>-->
+	<!--		<groupId>org.springframework.boot</groupId>-->
+	<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+	<!--		<version>3.5.3</version>-->
+	<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+	<!--		-->
+	<!--		-->
+	<!--	</parent>-->
 	<parent>
 		<groupId>org.chandulearning</groupId>
 		<artifactId>Ecommerce</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.chandulearning</groupId>
-	<artifactId>user-service</artifactId>
+	<artifactId>product-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user-service</name>
+	<name>product-service</name>
 	<description>This is used for accessing portal</description>
 
 	<properties>
@@ -55,7 +55,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- Adding Spring security for jwt -->
+
+		<!-- Adding Spring Cloud OpenFeign for microservices communication -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<!-- Adding Spring security for jwt
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -74,13 +81,7 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
-		</dependency>
-
-		<!-- Adding Spring Cloud OpenFeign for microservices communication -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>

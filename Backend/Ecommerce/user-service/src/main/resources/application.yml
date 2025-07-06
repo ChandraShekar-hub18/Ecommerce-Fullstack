@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: dev
+
+jwt:
+  secret: ${JWT_SECRET:default}
+  expiration: ${JWT_EXPIRATION:3600000}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
