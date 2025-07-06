@@ -1,5 +1,5 @@
 spring:
   application:
-    name: order-service
+    name: product-service
   profiles:
     active: dev
